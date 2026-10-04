@@ -1,0 +1,9 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.erppartnerfinder/partner-finder",
+  "title": "ERP Partner Finder",
+  "description": "Search, compare and shortlist Odoo implementation partners in Germany, Austria and Switzerland (rule-based, read-only).",
+  "version": "1.0.0",
+  "websiteUrl": "https://erppartnerfinder.com",
+  "remotes": [{ "type": "streamable-http", "url": "https://erppartnerfinder.com/api/mcp" }]
+}

@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://erppartnerfinder.com/schema/partner.schema.json",
+  "title": "ERP Partner Finder \u2013 partner feed (GET /api/partners)",
+  "type": "object",
+  "required": [
+    "source",
+    "partners"
+  ],
+  "properties": {
+    "source": {
+      "type": "string",
+      "format": "uri"
+    },
+    "operator": {
+      "type": "string"
+    },
+    "rankingRules": {
+      "type": "string",
+      "format": "uri"
+    },
+    "partners": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/partner"
+      }
+    }
+  },
+  "$defs": {
+    "partner": {
+      "type": "object",
+      "required": [
+        "rank",
+        "name",
+        "url",
+        "country",
+        "odoo",
+        "rankingScore"
+      ],
+      "properties": {
+        "rank": {
+          "type": "integer",
+          "description": "Position by the published ranking formula"
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Profile page (English)"
+        },
+        "urls": {
+          "type": "object",
+          "description": "Profile page per language (de, en, fr, it)",
+          "additionalProperties": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "website": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "country": {
+          "type": "string",
+          "enum": [
+            "DE",
+            "AT",
+            "CH"
+          ]
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "odoo": {
+          "type": "object",
+          "description": "Figures published on odoo.com/partners",
+          "properties": {
+            "tier": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "gold",
+                "silver",
+                "ready",
+                "learning",
+                "other",
+                null
+              ]
+            },
+            "partnerSince": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "referenceCount": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "referencesByIndustry": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": "integer"
+              }
+            },
+            "certifiedExperts": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "description": "Certified experts per Odoo version, e.g. {\"v19\": 6}",
+              "additionalProperties": {
+                "type": "integer"
+              }
+            },
+            "averageProjectUsers": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "largestProject": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "e.g. \"1000+ users\""
+            },
+            "customerRetention": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "description": "Percent"
+            },
+            "source": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "website_facts": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "Summarised from the partner's own website; null if it could not be read reliably",
+          "properties": {
+            "summary": {
+              "type": "string"
+            },
+            "specialisms": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "industryFocus": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "localCompliance": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "services": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "ownProducts": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "languages": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "odooFocus": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "exclusive",
+                "primary",
+                "one_of_several",
+                null
+              ]
+            },
+            "aiAssistedDelivery": {
+              "type": "boolean"
+            },
+            "pricingModel": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "publishedPrices": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "rankingScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}
