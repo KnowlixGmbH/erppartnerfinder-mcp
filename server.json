@@ -5,5 +5,14 @@
   "description": "Search, compare and shortlist Odoo implementation partners in Germany, Austria and Switzerland (rule-based, read-only).",
   "version": "1.0.0",
   "websiteUrl": "https://erppartnerfinder.com",
-  "remotes": [{ "type": "streamable-http", "url": "https://erppartnerfinder.com/api/mcp" }]
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://erppartnerfinder.com/api/mcp"
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/KnowlixGmbH/erppartnerfinder-mcp",
+    "source": "github"
+  }
 }
